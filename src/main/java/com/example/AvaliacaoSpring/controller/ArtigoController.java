@@ -19,13 +19,14 @@ public class ArtigoController {
     @Autowired
     private ArtigoService artigoService;
 
-
+    // metodo para buscar pelo id
     @GetMapping("/{id}")
     public ResponseEntity<ArtigoOutputDTO> read(@PathVariable Long id) {
         ArtigoOutputDTO artigo = artigoService.findById(id);
         return ResponseEntity.ok(artigo);
     }
 
+    // metodo para listar todos os itens
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ArtigoOutputDTO>> list(){
 
@@ -39,6 +40,7 @@ public class ArtigoController {
         }
     }
 
+    //metodo para inserir
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public  ResponseEntity<ArtigoOutputDTO> create (@RequestBody ArtigoInputDTO artigoInputDTO){
 
@@ -51,6 +53,7 @@ public class ArtigoController {
         }
     }
 
+    //metodo para atualizar
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ArtigoOutputDTO> update(@PathVariable Long id, @RequestBody ArtigoInputDTO artigoInputDTO) {
         ArtigoOutputDTO artigoAtualizado = artigoService.update(id, artigoInputDTO);
@@ -58,6 +61,7 @@ public class ArtigoController {
     }
 
 
+    //metodo para deletar
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         artigoService.delete(id);

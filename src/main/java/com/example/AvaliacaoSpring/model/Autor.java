@@ -16,7 +16,8 @@ public class Autor {
     @Column(nullable = true, unique = false)
     private String afiliacao;
 
-    // criar uma tabela intermediária para autor/artigo
+    // criar uma tabela de relacionamento para autor/artigo
+
     @ManyToMany
     @JoinTable(
             name = "autor_artigo",
@@ -24,8 +25,9 @@ public class Autor {
             inverseJoinColumns = @JoinColumn(name = "artigo_id")
     )
 
-    private List<Artigo> artigos = new ArrayList<Artigo>();
+    private List<Artigo> artigos;
 
+    // Construtor padrão
     public Autor() {
     }
 
@@ -37,7 +39,6 @@ public class Autor {
         this.afiliacao = afiliacao;
         this.artigos = artigos;
     }
-
 
     //Get and setters
 

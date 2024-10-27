@@ -14,22 +14,25 @@ public class Revista {
     @Column(nullable = true)
     private String nome;
     @Column(nullable = true, unique = true)
-    private int ISSN;
+    private String ISSN;
     @OneToMany(mappedBy = "revista")
     private List<Artigo> artigos = new ArrayList<Artigo>();
 
+    //construtor padrão
     public Revista(){
     }
 
     //Construtores
 
-    public Revista(long id, String nome, int ISSN) {
+    public Revista(long id, String nome, String ISSN, List<Artigo> artigos) {
         this.id = id;
         this.nome = nome;
         this.ISSN = ISSN;
+        this.artigos = artigos;
     }
 
     //Get and setters
+
 
     public long getId() {
         return id;
@@ -43,15 +46,23 @@ public class Revista {
         return nome;
     }
 
-    public void setName(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public int getISSN() {
+    public String getISSN() {
         return ISSN;
     }
 
-    public void setISSN(int ISSN) {
+    public void setISSN(String ISSN) {
         this.ISSN = ISSN;
+    }
+
+    public List<Artigo> getArtigos() {
+        return artigos;
+    }
+
+    public void setArtigos(List<Artigo> artigos) {
+        this.artigos = artigos;
     }
 }

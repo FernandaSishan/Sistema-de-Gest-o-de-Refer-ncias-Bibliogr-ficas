@@ -49,7 +49,11 @@ public class ArtigoService {
     public ArtigoOutputDTO create (ArtigoInputDTO artigoInputDTO){
 
         try{
+
             Artigo artigo = artigoInputDTO.build((revistaRepository));
+
+            artigo.setAno(artigoInputDTO.getAno());
+            artigo.setAutores(artigoInputDTO.getAutores());
 
             Artigo artigoNoBD = artigoRepository.save(artigo);
 
@@ -93,7 +97,7 @@ public class ArtigoService {
         if (artigoRepository.existsById(id)) {
             artigoRepository.deleteById(id);
         } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cidade não encontrada");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Artigo não encontrado");
         }
     }
 }
