@@ -2,8 +2,8 @@ package com.example.AvaliacaoSpring.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "autor")
 public class Autor {
@@ -25,7 +25,7 @@ public class Autor {
             inverseJoinColumns = @JoinColumn(name = "artigo_id")
     )
 
-    private List<Artigo> artigos;
+    private Set<Artigo> artigos = new HashSet<>();
 
     // Construtor padrão
     public Autor() {
@@ -33,7 +33,7 @@ public class Autor {
 
     //Construtores
 
-    public Autor(long id, String nome, String afiliacao, List<Artigo> artigos) {
+    public Autor(long id, String nome, String afiliacao, Set<Artigo> artigos) {
         this.id = id;
         this.nome = nome;
         this.afiliacao = afiliacao;
@@ -66,11 +66,11 @@ public class Autor {
         this.afiliacao = afiliacao;
     }
 
-    public List<Artigo> getArtigos() {
+    public Set<Artigo> getArtigos() {
         return artigos;
     }
 
-    public void setArtigos(List<Artigo> artigos) {
+    public void setArtigos(Set<Artigo> artigos) {
         this.artigos = artigos;
     }
 }

@@ -2,8 +2,8 @@ package com.example.AvaliacaoSpring.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "artigo")
 public class Artigo {
@@ -17,18 +17,20 @@ public class Artigo {
     private String ano;
 
     @ManyToMany(mappedBy = "artigos")
-    private List<Autor> autores = new ArrayList<Autor>();
+    private Set<Autor> autores = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "revista_id")
     private Revista revista;
 
+
+    //contrutor padrão
     public Artigo(){
     }
 
     //Construtores
 
-    public Artigo(long id, String titulo, String ano, List<Autor> autores, Revista revista) {
+    public Artigo(long id, String titulo, String ano, Set<Autor> autores, Revista revista) {
         this.id = id;
         this.titulo = titulo;
         this.ano = ano;
@@ -63,11 +65,11 @@ public class Artigo {
         this.ano = ano;
     }
 
-    public List<Autor> getAutores() {
+    public Set<Autor> getAutores() {
         return autores;
     }
 
-    public void setAutores(List<Autor> autores) {
+    public void setAutores(Set<Autor> autores) {
         this.autores = autores;
     }
 

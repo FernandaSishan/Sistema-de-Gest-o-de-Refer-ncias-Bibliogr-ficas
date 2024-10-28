@@ -4,13 +4,14 @@ import com.example.AvaliacaoSpring.model.Artigo;
 import com.example.AvaliacaoSpring.model.Autor;
 
 import java.util.List;
+import java.util.Set;
 
 public class AutorOutputDTO {
 
     private long id;
     private String nome;
     private String afiliacao;
-    private List<Artigo> artigos;
+    private Set<Artigo> artigos;
 
     //construtor padrão
     public AutorOutputDTO(){
@@ -47,11 +48,11 @@ public class AutorOutputDTO {
         this.afiliacao = afiliacao;
     }
 
-    public List<Artigo> getArtigos() {
+    public Set<Artigo> getArtigos() {
         return artigos;
     }
 
-    public void setArtigos(List<Artigo> artigos) {
+    public void setArtigos(Set<Artigo> artigos) {
         this.artigos = artigos;
     }
 }

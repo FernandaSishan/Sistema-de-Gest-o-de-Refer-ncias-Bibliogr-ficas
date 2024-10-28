@@ -4,6 +4,7 @@ import com.example.AvaliacaoSpring.model.Artigo;
 import com.example.AvaliacaoSpring.model.Autor;
 
 import java.util.List;
+import java.util.Set;
 
 public class ArtigoOutputDTO {
 
@@ -11,7 +12,7 @@ public class ArtigoOutputDTO {
     private String titulo;
     private String ano;
     private String revista;
-    private List<Autor> autores;
+    private Set<Autor> autores;
 
     public ArtigoOutputDTO(){
     }
@@ -59,11 +60,11 @@ public class ArtigoOutputDTO {
         this.revista = revista;
     }
 
-    public List<Autor> getAutores() {
+    public Set<Autor> getAutores() {
         return autores;
     }
 
-    public void setAutores(List<Autor> autores) {
+    public void setAutores(Set<Autor> autores) {
         this.autores = autores;
     }
 }
