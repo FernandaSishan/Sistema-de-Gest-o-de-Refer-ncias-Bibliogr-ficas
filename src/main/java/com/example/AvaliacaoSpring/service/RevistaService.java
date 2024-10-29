@@ -2,6 +2,7 @@ package com.example.AvaliacaoSpring.service;
 
 import com.example.AvaliacaoSpring.dto.RevistaInputDTO;
 import com.example.AvaliacaoSpring.dto.RevistaOutputDTO;
+import com.example.AvaliacaoSpring.dto.RevistaOutputDetalhadoDTO;
 import com.example.AvaliacaoSpring.model.Revista;
 import com.example.AvaliacaoSpring.repository.RevistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,10 @@ public class RevistaService {
     @Autowired
     private RevistaRepository revistaRepository;
 
-    public RevistaOutputDTO findById(Long id){
+    public RevistaOutputDetalhadoDTO findById(Long id){
         Optional<Revista> revista = revistaRepository.findById(id);
         if (revista.isPresent()){
-            return new RevistaOutputDTO(revista.get());
+            return new RevistaOutputDetalhadoDTO(revista.get());
         }else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Revista não encontrada");
         }
@@ -44,7 +45,6 @@ public class RevistaService {
             Revista revista = new Revista();
             revista.setNome(revistaInputDTO.getNome());
             revista.setISSN(revistaInputDTO.getISSN());
-            revista.setArtigos(revistaInputDTO.getArtigos());
 
             Revista novaRevista = revistaRepository.save(revista);
 

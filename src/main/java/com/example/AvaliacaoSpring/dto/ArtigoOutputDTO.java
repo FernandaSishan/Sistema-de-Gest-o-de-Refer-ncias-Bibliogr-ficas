@@ -1,10 +1,10 @@
 package com.example.AvaliacaoSpring.dto;
 
 import com.example.AvaliacaoSpring.model.Artigo;
-import com.example.AvaliacaoSpring.model.Autor;
 
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ArtigoOutputDTO {
 
@@ -12,7 +12,15 @@ public class ArtigoOutputDTO {
     private String titulo;
     private String ano;
     private String revista;
-    private Set<Autor> autores;
+    private Set<AutorOutputDTO> autores = new HashSet<>();
+
+    public Set<AutorOutputDTO> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(Set<AutorOutputDTO> autores) {
+        this.autores = autores;
+    }
 
     public ArtigoOutputDTO(){
     }
@@ -23,11 +31,10 @@ public class ArtigoOutputDTO {
         this.titulo = artigo.getTitulo();
         this.ano = artigo.getAno();
         this.revista = artigo.getRevista().getNome();
-        this.autores = artigo.getAutores();
+        this.autores = artigo.getAutores().stream().map(AutorOutputDTO::new).collect(Collectors.toSet());
     }
 
     //Get and Setters
-
     public Long getId() {
         return id;
     }
@@ -60,11 +67,4 @@ public class ArtigoOutputDTO {
         this.revista = revista;
     }
 
-    public Set<Autor> getAutores() {
-        return autores;
-    }
-
-    public void setAutores(Set<Autor> autores) {
-        this.autores = autores;
-    }
 }

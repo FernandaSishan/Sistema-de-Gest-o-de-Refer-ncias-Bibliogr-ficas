@@ -1,21 +1,22 @@
 package com.example.AvaliacaoSpring.dto;
 
-import com.example.AvaliacaoSpring.model.Artigo;
 import com.example.AvaliacaoSpring.model.Autor;
 
+import java.util.HashSet;
 import java.util.Set;
 
-public class AutorOutputDTO {
+public class AutorOutputDetalhadoDTO {
 
     private long id;
     private String nome;
     private String afiliacao;
+    private Set<ArtigoOutputDTO> artigos = new HashSet<>();
 
     //construtor padrão
-    public AutorOutputDTO(){
+    public AutorOutputDetalhadoDTO(){
     }
 
-    public AutorOutputDTO(Autor autor) {
+    public AutorOutputDetalhadoDTO(Autor autor) {
         this.id = autor.getId();
         this.nome = autor.getNome();
         this.afiliacao = autor.getAfiliacao();
@@ -45,5 +46,12 @@ public class AutorOutputDTO {
         this.afiliacao = afiliacao;
     }
 
+    public Set<ArtigoOutputDTO> getArtigos() {
+        return artigos;
+    }
+
+    public void setArtigos(Set<ArtigoOutputDTO> artigos) {
+        this.artigos = artigos;
+    }
 
 }

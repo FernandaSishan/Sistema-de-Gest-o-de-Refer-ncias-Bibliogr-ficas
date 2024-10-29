@@ -20,7 +20,6 @@ public class Artigo {
     private Set<Autor> autores = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "revista_id")
     private Revista revista;
 
 

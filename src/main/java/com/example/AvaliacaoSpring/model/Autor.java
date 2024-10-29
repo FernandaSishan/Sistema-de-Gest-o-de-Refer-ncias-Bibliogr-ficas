@@ -24,7 +24,6 @@ public class Autor {
             joinColumns = @JoinColumn(name = "autor_id"),
             inverseJoinColumns = @JoinColumn(name = "artigo_id")
     )
-
     private Set<Artigo> artigos = new HashSet<>();
 
     // Construtor padrão

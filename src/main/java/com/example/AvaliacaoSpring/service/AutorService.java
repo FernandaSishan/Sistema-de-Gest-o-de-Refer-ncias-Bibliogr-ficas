@@ -2,6 +2,7 @@ package com.example.AvaliacaoSpring.service;
 
 import com.example.AvaliacaoSpring.dto.AutorInputDTO;
 import com.example.AvaliacaoSpring.dto.AutorOutputDTO;
+import com.example.AvaliacaoSpring.dto.AutorOutputDetalhadoDTO;
 import com.example.AvaliacaoSpring.model.Autor;
 import com.example.AvaliacaoSpring.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,10 @@ public class AutorService {
     @Autowired
     private AutorRepository autorRepository;
 
-    public AutorOutputDTO findById(Long id) {
+    public AutorOutputDetalhadoDTO findById(Long id) {
         Optional<Autor> autor = autorRepository.findById(id);
         if (autor.isPresent()) {
-            return new AutorOutputDTO(autor.get());
+            return new AutorOutputDetalhadoDTO(autor.get());
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Autor não encontrado");
         }
@@ -47,7 +48,6 @@ public class AutorService {
             Autor autor = new Autor();
             autor.setNome(autorInputDTO.getNome());
             autor.setAfiliacao(autorInputDTO.getAfiliacao());
-            autor.setArtigos(autorInputDTO.getArtigos());
 
             Autor novoAutor = autorRepository.save(autor);
 
@@ -67,7 +67,6 @@ public class AutorService {
 
             autorEncontrado.setNome(autorInputDTO.getNome());
             autorEncontrado.setAfiliacao(autorInputDTO.getAfiliacao());
-            autorEncontrado.setArtigos(autorInputDTO.getArtigos());
 
             Autor autorAtualizado = autorRepository.save(autorEncontrado);
 
