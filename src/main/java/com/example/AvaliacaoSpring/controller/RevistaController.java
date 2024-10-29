@@ -3,6 +3,7 @@ package com.example.AvaliacaoSpring.controller;
 
 import com.example.AvaliacaoSpring.dto.RevistaInputDTO;
 import com.example.AvaliacaoSpring.dto.RevistaOutputDTO;
+import com.example.AvaliacaoSpring.dto.RevistaOutputDetalhadoDTO;
 import com.example.AvaliacaoSpring.service.RevistaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +21,8 @@ public class RevistaController {
     private RevistaService revistaService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<RevistaOutputDTO> read (@PathVariable Long id){
-        RevistaOutputDTO revista = revistaService.findById(id);
+    public ResponseEntity<RevistaOutputDetalhadoDTO> read (@PathVariable Long id){
+        RevistaOutputDetalhadoDTO revista = revistaService.findById(id);
         return ResponseEntity.ok(revista);
     }
 

@@ -5,19 +5,21 @@ import com.example.AvaliacaoSpring.model.Revista;
 
 import java.util.List;
 
-public class RevistaOutputDTO {
+public class RevistaOutputDetalhadoDTO {
 
     private long id;
     private String nome;
     private String ISSN;
+    private List<ArtigoOutputDTO> artigos;
 
-    public RevistaOutputDTO(){
+    public RevistaOutputDetalhadoDTO(){
     }
 
-    public RevistaOutputDTO(Revista revista) {
+    public RevistaOutputDetalhadoDTO(Revista revista) {
         this.id = revista.getId();
         this.nome = revista.getNome();
         this.ISSN = revista.getISSN();
+        this.artigos = revista.getArtigos().stream().map(ArtigoOutputDTO::new).toList();
     }
 
     public long getId() {
@@ -42,5 +44,13 @@ public class RevistaOutputDTO {
 
     public void setISSN(String ISSN) {
         this.ISSN = ISSN;
+    }
+
+    public List<ArtigoOutputDTO> getArtigos() {
+        return artigos;
+    }
+
+    public void setArtigos(List<ArtigoOutputDTO> artigos) {
+        this.artigos = artigos;
     }
 }

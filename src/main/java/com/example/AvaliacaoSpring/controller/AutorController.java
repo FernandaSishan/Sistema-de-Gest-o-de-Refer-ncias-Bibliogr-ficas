@@ -2,6 +2,7 @@ package com.example.AvaliacaoSpring.controller;
 
 import com.example.AvaliacaoSpring.dto.AutorInputDTO;
 import com.example.AvaliacaoSpring.dto.AutorOutputDTO;
+import com.example.AvaliacaoSpring.dto.AutorOutputDetalhadoDTO;
 import com.example.AvaliacaoSpring.service.AutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,8 @@ public class AutorController {
     private AutorService autorService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<AutorOutputDTO> read(@PathVariable Long id) {
-        AutorOutputDTO autor = autorService.findById(id);
+    public ResponseEntity<AutorOutputDetalhadoDTO> read(@PathVariable Long id) {
+        AutorOutputDetalhadoDTO autor = autorService.findById(id);
         return ResponseEntity.ok(autor);
     }
 

@@ -4,7 +4,6 @@ import com.example.AvaliacaoSpring.model.Artigo;
 import com.example.AvaliacaoSpring.model.Autor;
 import com.example.AvaliacaoSpring.repository.RevistaRepository;
 
-import java.util.List;
 import java.util.Set;
 
 public class ArtigoInputDTO {
@@ -12,7 +11,7 @@ public class ArtigoInputDTO {
     private String titulo;
     private String ano;
     private String revista;
-    private Set<Autor> autores;
+    private Set<AutorInputDTO> autores;
 
     public ArtigoInputDTO(){
     }
@@ -35,11 +34,11 @@ public class ArtigoInputDTO {
         this.ano = ano;
     }
 
-    public Set<Autor> getAutores() {
+    public Set<AutorInputDTO> getAutores() {
         return autores;
     }
 
-    public void setAutores(Set<Autor> autores) {
+    public void setAutores(Set<AutorInputDTO> autores) {
         this.autores = autores;
     }
 
