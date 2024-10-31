@@ -42,12 +42,12 @@ public class AutorController {
 
         AutorOutputDTO autorOutputDTO = autorService.create(autorInputDTO);
 
-            if(autorOutputDTO != null){
-                return new ResponseEntity<>(autorOutputDTO, HttpStatus.CREATED);
-            }else{
-                return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+        if(autorOutputDTO != null){
+            return new ResponseEntity<>(autorOutputDTO, HttpStatus.CREATED);
+        }else{
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AutorOutputDTO> update(@PathVariable Long id, @RequestBody AutorInputDTO autorInputDTO){

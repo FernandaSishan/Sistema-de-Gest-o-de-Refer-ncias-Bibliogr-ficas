@@ -4,6 +4,7 @@ import com.example.AvaliacaoSpring.dto.AutorInputDTO;
 import com.example.AvaliacaoSpring.dto.AutorOutputDTO;
 import com.example.AvaliacaoSpring.dto.AutorOutputDetalhadoDTO;
 import com.example.AvaliacaoSpring.model.Autor;
+import com.example.AvaliacaoSpring.repository.AfiliacaoRepository;
 import com.example.AvaliacaoSpring.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,9 @@ public class AutorService {
 
     @Autowired
     private AutorRepository autorRepository;
+
+    @Autowired
+    private AfiliacaoRepository afiliacaoRepository;
 
     public AutorOutputDetalhadoDTO findById(Long id) {
         Optional<Autor> autor = autorRepository.findById(id);
@@ -47,7 +51,7 @@ public class AutorService {
         try {
             Autor autor = new Autor();
             autor.setNome(autorInputDTO.getNome());
-            autor.setAfiliacao(autorInputDTO.getAfiliacao());
+            autor.setAfiliacao(afiliacaoRepository.findByNome(autorInputDTO.getAfiliacao()));
 
             Autor novoAutor = autorRepository.save(autor);
 
@@ -66,7 +70,7 @@ public class AutorService {
             Autor autorEncontrado = possivelAutor.get();
 
             autorEncontrado.setNome(autorInputDTO.getNome());
-            autorEncontrado.setAfiliacao(autorInputDTO.getAfiliacao());
+            autorEncontrado.setAfiliacao(afiliacaoRepository.findByNome(autorInputDTO.getAfiliacao()));
 
             Autor autorAtualizado = autorRepository.save(autorEncontrado);
 
@@ -80,7 +84,7 @@ public class AutorService {
         if(autorRepository.existsById(id)){
             autorRepository.deleteById(id);
         }else{
-           throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Autor não encontrado");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Autor não encontrado");
         }
     }
 }

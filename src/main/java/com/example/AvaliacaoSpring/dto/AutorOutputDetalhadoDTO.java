@@ -19,7 +19,7 @@ public class AutorOutputDetalhadoDTO {
     public AutorOutputDetalhadoDTO(Autor autor) {
         this.id = autor.getId();
         this.nome = autor.getNome();
-        this.afiliacao = autor.getAfiliacao();
+        this.afiliacao = autor.getAfiliacao().getNome();
     }
 
     public long getId() {

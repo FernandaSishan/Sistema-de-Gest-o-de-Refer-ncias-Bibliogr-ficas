@@ -1,6 +1,9 @@
 package com.example.AvaliacaoSpring.dto;
 
 
+import com.example.AvaliacaoSpring.model.Autor;
+import com.example.AvaliacaoSpring.repository.AfiliacaoRepository;
+
 public class AutorInputDTO {
 
     private String nome;
@@ -26,4 +29,10 @@ public class AutorInputDTO {
         this.afiliacao = afiliacao;
     }
 
+    public Autor build(AfiliacaoRepository afiliacaoRepository){
+        Autor autor = new Autor();
+        autor.setNome((this.nome));
+        autor.setAfiliacao(afiliacaoRepository.findByNome(this.afiliacao));
+        return autor;
+    }
 }

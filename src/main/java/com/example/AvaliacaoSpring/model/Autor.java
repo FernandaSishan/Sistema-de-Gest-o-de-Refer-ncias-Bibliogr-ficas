@@ -13,8 +13,9 @@ public class Autor {
     private long id;
     @Column(nullable = true, unique = false)
     private String nome;
-    @Column(nullable = true, unique = false)
-    private String afiliacao;
+
+    @ManyToOne
+    private Afiliacao afiliacao;
 
     // criar uma tabela de relacionamento para autor/artigo
 
@@ -32,7 +33,7 @@ public class Autor {
 
     //Construtores
 
-    public Autor(long id, String nome, String afiliacao, Set<Artigo> artigos) {
+    public Autor(long id, String nome, Afiliacao afiliacao, Set<Artigo> artigos) {
         this.id = id;
         this.nome = nome;
         this.afiliacao = afiliacao;
@@ -57,11 +58,11 @@ public class Autor {
         this.nome = nome;
     }
 
-    public String getAfiliacao() {
+    public Afiliacao getAfiliacao() {
         return afiliacao;
     }
 
-    public void setAfiliacao(String afiliacao) {
+    public void setAfiliacao(Afiliacao afiliacao) {
         this.afiliacao = afiliacao;
     }
 

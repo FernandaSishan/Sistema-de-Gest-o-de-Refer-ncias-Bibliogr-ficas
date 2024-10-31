@@ -1,9 +1,7 @@
 package com.example.AvaliacaoSpring.dto;
 
-import com.example.AvaliacaoSpring.model.Artigo;
 import com.example.AvaliacaoSpring.model.Autor;
 
-import java.util.Set;
 
 public class AutorOutputDTO {
 
@@ -18,7 +16,7 @@ public class AutorOutputDTO {
     public AutorOutputDTO(Autor autor) {
         this.id = autor.getId();
         this.nome = autor.getNome();
-        this.afiliacao = autor.getAfiliacao();
+        this.afiliacao = autor.getAfiliacao().getNome();
     }
 
     public long getId() {
@@ -44,6 +42,4 @@ public class AutorOutputDTO {
     public void setAfiliacao(String afiliacao) {
         this.afiliacao = afiliacao;
     }
-
-
 }
